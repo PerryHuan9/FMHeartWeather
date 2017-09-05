@@ -1,14 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.vip.fmheartweather.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+    <ImageView
+        android:id="@+id/bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
+
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#00fdfdfd">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+                    <TextView
+                        android:id="@+id/title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="我爱你"
+                        android:textSize="20dp"/>
+                </android.support.v7.widget.Toolbar>
+
+
+            </android.support.design.widget.AppBarLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/myext"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hello World!"
+                        android:textSize="18dp"/>
+
+                </LinearLayout>
+
+
+            </ScrollView>
+
+        </android.support.design.widget.CoordinatorLayout>
+
+        <android.support.design.widget.NavigationView
+            android:id="@+id/navigation_view"
+            android:layout_width="200dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/nav_header"
+            app:menu="@menu/nav_menu"/>
+
+    </android.support.v4.widget.DrawerLayout>
+
+
 </RelativeLayout>

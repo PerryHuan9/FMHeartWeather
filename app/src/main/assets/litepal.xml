@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
-    <litepal>
+<litepal>
     <dbname value="FMH_wweather"/>
     <version value="1"/>
     <list>
         <mapping class="com.vip.fmheartweather.db.Province"/>
+        <mapping class="com.vip.fmheartweather.db.City"/>
+        <mapping class="com.vip.fmheartweather.db.County"/>
     </list>
 
 
