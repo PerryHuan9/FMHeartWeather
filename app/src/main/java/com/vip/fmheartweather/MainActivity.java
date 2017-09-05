@@ -1,5 +1,6 @@
 package com.vip.fmheartweather;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -14,6 +15,7 @@ import com.bumptech.glide.Glide;
 
 public class MainActivity extends AppCompatActivity {
 	private DrawerLayout drawerLayout;
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
 
+
 	}
 
 	@Override
@@ -47,9 +50,18 @@ public class MainActivity extends AppCompatActivity {
 			case android.R.id.home:
 				drawerLayout.openDrawer(GravityCompat.START);
 				break;
+			case R.id.menu_location:
+
+				break;
 
 		}
 
 		return false;
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+
 	}
 }
