@@ -12,6 +12,7 @@
         android:id="@+id/bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="?attr/colorPrimary"
         android:scaleType="centerCrop"/>
 
     <android.support.v4.widget.DrawerLayout
@@ -19,55 +20,63 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.design.widget.CoordinatorLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <android.support.design.widget.AppBarLayout
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="#00fdfdfd">
+                android:layout_height="?attr/actionBarSize"
+                android:background="#00fdfdfd"
+                app:layout_scrollFlags="enterAlways|scroll|snap"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
-                <android.support.v7.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    app:layout_scrollFlags="enterAlways|scroll|snap"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
-
-                    <TextView
-                        android:id="@+id/myTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:textSize="20dp"/>
-                </android.support.v7.widget.Toolbar>
+                <TextView
+                    android:id="@+id/myTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textColor="#fff"
+                    android:textSize="20dp"/>
+            </android.support.v7.widget.Toolbar>
 
 
-            </android.support.design.widget.AppBarLayout>
-
-            <ScrollView
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/refresh"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-                <LinearLayout
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:scrollbars="none">
 
-                    <TextView
-                        android:id="@+id/myext"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Hello World!"
-                        android:textSize="18dp"/>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-                </LinearLayout>
+                        <include layout="@layout/now"/>
+
+                        <include layout="@layout/forecast"/>
+
+                        <include layout="@layout/aqi"/>
+
+                        <include layout="@layout/suggestion"/>
 
 
-            </ScrollView>
+                    </LinearLayout>
 
-        </android.support.design.widget.CoordinatorLayout>
+
+                </ScrollView>
+            </android.support.v4.widget.SwipeRefreshLayout>
+
+
+        </LinearLayout>
 
         <android.support.design.widget.NavigationView
             android:id="@+id/navigation_view"

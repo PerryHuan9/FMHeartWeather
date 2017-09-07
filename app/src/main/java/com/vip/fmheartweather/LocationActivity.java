@@ -36,7 +36,6 @@ import okhttp3.Response;
  */
 
 public class LocationActivity extends AppCompatActivity {
-	public static final String SELECT_COUNTY = "selectCounty";
 	public static final String WEATHER_ID = "weatherId";
 	private Spinner provinceSpinner, citySpinner, countySpinner;
 	private List<String> provinceStrList = new ArrayList<>();
@@ -50,7 +49,7 @@ public class LocationActivity extends AppCompatActivity {
 	private List<City> cityList;
 	private List<County> countyList;
 	private int provinceId, cityId;
-	private String selectCounty, weatherId;
+	private String weatherId;
 
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -123,8 +122,6 @@ public class LocationActivity extends AppCompatActivity {
 
 	private void setReturnValue(int i) {
 		County county = countyList.get(i);
-		LogUtil.d("tag", county.getCountyName());
-		selectCounty = county.getCountyName();
 		weatherId = county.getWeatherId();
 	}
 
@@ -136,7 +133,6 @@ public class LocationActivity extends AppCompatActivity {
 				return true;
 			case R.id.set_city:
 				Intent intent = new Intent();
-				intent.putExtra(SELECT_COUNTY, selectCounty);
 				intent.putExtra(WEATHER_ID, weatherId);
 				setResult(RESULT_OK, intent);
 				finish();

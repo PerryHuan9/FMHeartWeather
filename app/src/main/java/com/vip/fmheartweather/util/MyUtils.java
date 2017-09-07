@@ -2,6 +2,8 @@ package com.vip.fmheartweather.util;
 
 import android.text.TextUtils;
 
+import com.google.gson.Gson;
+import com.vip.fmheartweather.Gson.Weather;
 import com.vip.fmheartweather.db.City;
 import com.vip.fmheartweather.db.County;
 import com.vip.fmheartweather.db.Province;
@@ -15,7 +17,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
 /**
- *工具类
+ * 工具类
  */
 
 public class MyUtils {
@@ -85,6 +87,18 @@ public class MyUtils {
 			e.printStackTrace();
 		}
 		return false;
+	}
+
+	public static Weather handleWeatherResponse(String response) {
+		try {
+			JSONObject jsonObject = new JSONObject(response);
+			JSONArray weathers = jsonObject.getJSONArray("HeWeather");
+			String weatherContent = weathers.getJSONObject(0).toString();
+			return new Gson().fromJson(weatherContent, Weather.class);
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 
