@@ -13,7 +13,7 @@ public class LogUtil {
 	private static final int WARN = 4;
 	private static final int ERROR = 5;
 	private static final int ASSERT = 6;
-	private static int level = VERBOSE;
+	private static int level = DEBUG;
 
 	public static void v(String tag, String str) {
 		if (level <= VERBOSE) {

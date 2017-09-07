@@ -79,7 +79,7 @@ public class LocationActivity extends AppCompatActivity {
 			public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 				provinceId = provinceList.get(i).getProvinceCode();
 				initCityStrList();
-				initCountyStrList();
+
 
 			}
 
@@ -151,6 +151,7 @@ public class LocationActivity extends AppCompatActivity {
 			}
 			provinceAdapter.notifyDataSetChanged();
 			provinceSpinner.setSelection(0);
+			provinceId = provinceList.get(0).getProvinceCode();
 		} else {
 			String adress = "http://guolin.tech/api/china";
 			initFromService(adress, "province");
@@ -169,6 +170,7 @@ public class LocationActivity extends AppCompatActivity {
 			cityAdapter.notifyDataSetChanged();
 			citySpinner.setSelection(0);
 			cityId = cityList.get(0).getCityCode();
+			initCountyStrList();
 		} else {
 			String address = "http://guolin.tech/api/china/" + provinceId;
 			initFromService(address, "city");
