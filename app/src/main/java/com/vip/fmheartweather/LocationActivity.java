@@ -104,9 +104,7 @@ public class LocationActivity extends AppCompatActivity {
 		countySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			@Override
 			public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-				County county = countyList.get(i);
-				selectCounty = county.getCountyName();
-				weatherId = county.getWeatherId();
+				setReturnValue(i);
 			}
 
 			@Override
@@ -121,6 +119,13 @@ public class LocationActivity extends AppCompatActivity {
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.loca_menu, menu);
 		return true;
+	}
+
+	private void setReturnValue(int i) {
+		County county = countyList.get(i);
+		LogUtil.d("tag", county.getCountyName());
+		selectCounty = county.getCountyName();
+		weatherId = county.getWeatherId();
 	}
 
 	@Override
@@ -186,6 +191,7 @@ public class LocationActivity extends AppCompatActivity {
 			}
 			countyAdapter.notifyDataSetChanged();
 			countySpinner.setSelection(0);
+			setReturnValue(0);
 		} else {
 			String address = "http://guolin.tech/api/china/" + provinceId + "/" + cityId;
 			initFromService(address, "county");
