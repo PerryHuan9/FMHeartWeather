@@ -9,7 +9,7 @@
         android:id="@+id/loc_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
+        android:background="#fff"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         <TextView
@@ -17,12 +17,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="设置城市"
-            android:textSize="20sp"/>
+            android:text="选择城市"
+            android:textStyle="bold"
+            android:textSize="17sp"/>
 
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
+        android:layout_margin="40dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">

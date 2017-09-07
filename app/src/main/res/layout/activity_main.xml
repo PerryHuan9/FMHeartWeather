@@ -32,14 +32,14 @@
                     android:id="@+id/toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
+                    app:layout_scrollFlags="enterAlways|scroll|snap"
                     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
                     <TextView
-                        android:id="@+id/title"
+                        android:id="@+id/myTitle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:text="我爱你"
                         android:textSize="20dp"/>
                 </android.support.v7.widget.Toolbar>
 

@@ -3,6 +3,7 @@ package com.vip.fmheartweather.util;
 import android.text.TextUtils;
 
 import com.vip.fmheartweather.db.City;
+import com.vip.fmheartweather.db.County;
 import com.vip.fmheartweather.db.Province;
 
 import org.json.JSONArray;
@@ -14,7 +15,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
 /**
- *
+ *工具类
  */
 
 public class MyUtils {
@@ -35,9 +36,11 @@ public class MyUtils {
 					province.setProvinceCode(jsonObject.getInt("id"));
 					province.save();
 				}
+				LogUtil.w("tag", "已经保存成功");
 				return true;
 			}
 		} catch (JSONException e) {
+			LogUtil.w("tag", "出错了");
 			e.printStackTrace();
 		}
 		return false;
@@ -64,6 +67,25 @@ public class MyUtils {
 		return false;
 	}
 
+	public static boolean handleCountyResponse(String address, int cityCode) {
+		try {
+			if (!TextUtils.isEmpty(address)) {
+				JSONArray jsonArray = new JSONArray(address);
+				for (int i = 0; i < jsonArray.length(); i++) {
+					JSONObject jsonObject = jsonArray.getJSONObject(i);
+					County county = new County();
+					county.setCountyName(jsonObject.getString("name"));
+					county.setWeatherId(jsonObject.getString("weather_id"));
+					county.setCityCode(cityCode);
+					county.save();
+				}
+				return true;
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
 
 
 }

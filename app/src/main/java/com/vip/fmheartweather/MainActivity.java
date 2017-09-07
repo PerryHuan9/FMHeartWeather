@@ -10,11 +10,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
 public class MainActivity extends AppCompatActivity {
 	private DrawerLayout drawerLayout;
+	public static final int REQUEST_CODE = 1;
+	private TextView titleView;
 
 
 	@Override
@@ -32,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 		ImageView bg = (ImageView) findViewById(R.id.bg);
 		Glide.with(this).load(R.drawable.bg).into(bg);
 		drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
+		titleView = (TextView) findViewById(R.id.myTitle);
 
 
 	}
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
 				drawerLayout.openDrawer(GravityCompat.START);
 				break;
 			case R.id.menu_location:
-
+				startActivityForResult(new Intent(this, LocationActivity.class), REQUEST_CODE);
 				break;
 
 		}
@@ -61,7 +64,9 @@ public class MainActivity extends AppCompatActivity {
 
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+		if (requestCode == REQUEST_CODE && resultCode == RESULT_OK) {
+			titleView.setText(data.getStringExtra(LocationActivity.SELECT_COUNTY));
+		}
 
 	}
 }
