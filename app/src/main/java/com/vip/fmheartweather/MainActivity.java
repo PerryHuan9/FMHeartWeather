@@ -23,6 +23,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.vip.fmheartweather.Gson.Forecast;
 import com.vip.fmheartweather.Gson.Weather;
+import com.vip.fmheartweather.service.WeatherUpdateService;
 import com.vip.fmheartweather.util.LogUtil;
 import com.vip.fmheartweather.util.MyUtils;
 
@@ -219,6 +220,8 @@ public class MainActivity extends AppCompatActivity {
 		carWashView.setText(carWash);
 		sportView.setText(sport);
 		refreshLayout.setVisibility(View.VISIBLE);
+		Intent intent=new Intent(this, WeatherUpdateService.class);
+		startService(intent);
 
 	}
 

@@ -19,6 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".LocationActivity"/>
+        <service android:name=".service.WeatherUpdateService"/>
     </application>
 
 </manifest>
