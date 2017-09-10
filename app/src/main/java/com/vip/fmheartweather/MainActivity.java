@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -37,6 +39,14 @@ import okhttp3.Response;
  *
  */
 public class MainActivity extends AppCompatActivity {
+	public static final String WEB_URL = "weburl";
+	public final String READ_URL = "http://m.b5200.net/";
+	public final String MUSIC_URL = "https://m.y.qq.com/";
+	public final String GAME_URL = "https://mobile.baidu" +
+		   ".com/search?w=%E6%B8%B8%E6%88%8F&source=" +
+		   "aladdin@wise_app_rank@game@more&ala" +
+		   "=wise_app_rank@%E6%B8%B8%E6%88%8F&from=1015530d";
+	public static final String WEB_TITLE = "webtitle";
 	public static final String WEATHER_INFO = "WEATHER";
 	public static final String BING_PIC = "BINGPIC";
 	public static final int REQUEST_CODE = 1;
@@ -54,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
 	private SwipeRefreshLayout refreshLayout;
 	private ScrollView scrollView;
 	private String weatherId;
+	private NavigationView navView;
 
 
 	@Override
@@ -86,6 +97,34 @@ public class MainActivity extends AppCompatActivity {
 				requestWeatherInfo(weatherId);
 			}
 		});
+		navView.setNavigationItemSelectedListener(new NavigationView
+			   .OnNavigationItemSelectedListener() {
+
+			@Override
+			public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+				Intent intent = new Intent(MainActivity.this, WebActivity.class);
+				switch (item.getItemId()) {
+					case R.id.read:
+						intent.putExtra(WEB_URL, READ_URL);
+						intent.putExtra(WEB_TITLE,"阅读");
+						break;
+					case R.id.game:
+						intent.putExtra(WEB_URL, GAME_URL);
+						intent.putExtra(WEB_TITLE,"游戏");
+						break;
+					case R.id.music:
+						intent.putExtra(WEB_URL, MUSIC_URL);
+						intent.putExtra(WEB_TITLE,"音乐");
+						break;
+					case R.id.settings:
+						break;
+
+				}
+				startActivity(intent);
+				drawerLayout.closeDrawers();
+				return false;
+			}
+		});
 	}
 
 	private void initAllView() {
@@ -102,6 +141,7 @@ public class MainActivity extends AppCompatActivity {
 		carWashView = (TextView) findViewById(R.id.carwash_text);
 		sportView = (TextView) findViewById(R.id.sport_text);
 		scrollView = (ScrollView) findViewById(R.id.scrollV);
+		navView = (NavigationView) findViewById(R.id.navigation_view);
 	}
 
 	@Override
@@ -121,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
 				startActivityForResult(new Intent(this, LocationActivity.class), REQUEST_CODE);
 				break;
 
+
 		}
 
 		return false;
@@ -137,10 +178,10 @@ public class MainActivity extends AppCompatActivity {
 	}
 
 	private void requestWeatherInfo(final String weatherId) {
-		refreshLayout.setVisibility(View.INVISIBLE);
+		scrollView.setVisibility(View.INVISIBLE);
 		loadBingPic();
 		final String weatherAddress = "http://guolin.tech/api/weather?cityid=" + weatherId +
-			   "&key=9c806486970e4d359519b29fef870192";
+			   "&key=bc0418b57b2d4918819d3974ac1285d9";
 		MyUtils.sendOkHttpRequest(weatherAddress, new Callback() {
 			@Override
 			public void onFailure(Call call, IOException e) {
@@ -219,8 +260,8 @@ public class MainActivity extends AppCompatActivity {
 		confortView.setText(comfort);
 		carWashView.setText(carWash);
 		sportView.setText(sport);
-		refreshLayout.setVisibility(View.VISIBLE);
-		Intent intent=new Intent(this, WeatherUpdateService.class);
+		scrollView.setVisibility(View.VISIBLE);
+		Intent intent = new Intent(this, WeatherUpdateService.class);
 		startService(intent);
 
 	}

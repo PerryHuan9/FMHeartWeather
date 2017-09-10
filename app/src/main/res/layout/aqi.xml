@@ -25,31 +25,32 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/aqi_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="45"
                     android:layout_gravity="center"
+                    android:text="45"
                     android:textColor="#fff"
                     android:textSize="45dp"/>
 
                 <TextView
-                    android:layout_marginTop="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="AQI指数"
-                    android:textSize="17sp"
                     android:layout_gravity="center"
-                    android:textColor="#fff"/>
+                    android:layout_marginTop="10dp"
+                    android:text="AQI指数"
+                    android:textColor="#fff"
+                    android:textSize="15sp"/>
 
             </LinearLayout>
-
 
 
         </RelativeLayout>
@@ -58,31 +59,32 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1">
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:orientation="vertical">
+
                 <TextView
                     android:id="@+id/pm25_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="45"
                     android:layout_gravity="center"
+                    android:text="45"
                     android:textColor="#fff"
                     android:textSize="45dp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PM2.5"
-                    android:layout_marginTop="10dp"
-                    android:textSize="17sp"
                     android:layout_gravity="center"
-                    android:textColor="#fff"/>
+                    android:layout_marginTop="10dp"
+                    android:text="PM2.5"
+                    android:textColor="#fff"
+                    android:textSize="15sp"/>
 
             </LinearLayout>
-
 
 
         </RelativeLayout>

@@ -76,7 +76,7 @@ public class WeatherUpdateService extends Service {
 			final Weather weather = MyUtils.handleWeatherResponse(weatherInfo);
 			String weatherId = weather.basic.weatherId;
 			String address = "http://guolin.tech/api/weather?cityid=" + weatherId +
-				   "&key=9c806486970e4d359519b29fef870192";
+				   "&key=bc0418b57b2d4918819d3974ac1285d9";
 			MyUtils.sendOkHttpRequest(address, new Callback() {
 				@Override
 				public void onFailure(Call call, IOException e) {
